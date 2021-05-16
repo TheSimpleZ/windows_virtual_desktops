@@ -1,7 +1,10 @@
 import winim/lean
 
-proc GetCurrentDesktopNumber*(): cint {.importc, dynlib: "VirtualDesktopAccessor.dll".}
-proc GoToDesktopNumber*(number: cint) {.importc, dynlib: "VirtualDesktopAccessor.dll".}
-proc MoveWindowToDesktopNumber*(window: HWND, number: cint): BOOL {.importc, dynlib: "VirtualDesktopAccessor.dll".}
-proc CreateVirtualDesktop*(): cint {.importc, dynlib: "VirtualDesktopAccessor.dll".}
-proc RemoveVirtualDesktop*(number, fallbackDesktop: cint): bool {.importc, dynlib: "VirtualDesktopAccessor.dll".}
+{.push importc, dynlib: "VirtualDesktopAccessor.dll".}
+proc GetDesktopCount*(): cint
+proc GetCurrentDesktopNumber*(): cint
+proc GoToDesktopNumber*(number: cint)
+proc MoveWindowToDesktopNumber*(window: HWND, number: cint): BOOL
+proc CreateVirtualDesktop*(): cint
+proc RemoveVirtualDesktop*(number, fallbackDesktop: cint): bool
+{.pop.}
